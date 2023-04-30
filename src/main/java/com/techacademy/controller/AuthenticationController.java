@@ -20,7 +20,7 @@ public class AuthenticationController {
     @GetMapping("/list")
     public String getList(Model model) {
         // 全件検索をmodelに登録
-        model.addAttribute("authenticationlist", service.getAuthenticationsList());
+        model.addAttribute("authenticationlist", service.getAuthenticationList());
         // authentication/list.htmlに画面遷移
         return "authentication/list";
     }

@@ -20,7 +20,7 @@ public class EmployeeController {
     @GetMapping("/list")
     public String getList(Model model) {
         // 全件結果をModelに登録
-        model.addAttribute("employeelist", service.getEmployeesList());
+        model.addAttribute("employeelist", service.getEmployeeList());
         // employee/list.htmlに画面遷移
         return "employee/list";
     }

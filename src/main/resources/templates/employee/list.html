@@ -6,30 +6,22 @@
 <link rel="stylesheet" th:href="@{/css/employee/list.css}">
 </head>
 <body>
-<h2>日報管理システム</h2>
-<h3>従業員管理　日報管理　ログアウト</h3>
-<h1>従業員一覧</h1>
-<table>
-        <tr>
-            <th>社員番号</th>
-            <th>氏名</th>
-            <th>操作</th>
-          </tr>
-          <tr th:each="employee : ${employeelist}">
-          <tr th:each="authentication : ${authenticationlist}">
-          <tr th:each="report : ${reportlist}">
-            <td th:text="${authentication.code}"></td>
-            <td th:text="${employee.name}"></td>
-            <td> 
-            <a th:href="@{/report/content}">詳細</a>
-            </td>
-           </tr>
-        
-    </table>
-    <a th:href="@{/employee/new}">新規従業員の登録</a>
-    
-    
-
-
+	<h2>日報管理システム</h2>
+	<h3>従業員管理 日報管理 ログアウト</h3>
+	<h1>従業員一覧</h1>
+	<table>
+		<tr>
+			<th>社員番号</th>
+			<th>氏名</th>
+			<th>操作</th>
+		</tr>
+    	<tr th:each="employee : ${employeelist}">
+		<tr th:each="authentication : ${authenticationlist}">
+			<td th:text="${authentication.code}"></td>
+			<td th:text="${employee.name}"></td>
+			<td><a th:href="@{/employee/shousai}">詳細</a></td>
+		</tr>
+	</table>
+	<a th:href="@{/employee/new}">新規従業員の登録</a>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class EmployeeService {
     }
 
     /** 全件検索して返す **/
-    public List<Employee> getEmployeesList() {
+    public List<Employee> getEmployeeList() {
         // リポジトリのfindAllメソッドを呼び出す
         return employeeRepository.findAll();
     }

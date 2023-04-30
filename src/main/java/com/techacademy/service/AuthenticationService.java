@@ -17,7 +17,7 @@ public class AuthenticationService {
     }
 
     /** 全件検索して返す */
-    public List<Authentication> getAuthenticationsList() {
+    public List<Authentication> getAuthenticationList() {
         // リポジトリのfindAllメソッドを呼び出す
         return authenticationRepository.findAll();
     }

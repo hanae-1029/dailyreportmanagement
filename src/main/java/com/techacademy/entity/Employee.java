@@ -33,7 +33,7 @@ public class Employee {
 
     /** 削除フラグ **/
     @Column(name = "delete_flag")
-    public Integer deg;
+    public Integer deleteflag;
 
     /** 登録日時 **/
     @Column(name = "created_at", updatable = false)
