@@ -17,10 +17,10 @@
 		</tr>
     	<tr th:each="employee : ${employeelist}">
 		<tr th:each="authentication : ${authenticationlist}">
-			<td th:text="${authentication.code}"></td>
+			<td th:text="${employee.authentication.code}"></td>
 			<td th:text="${employee.name}"></td>
 			<td><a th:href="@{/employee/shousai}">詳細</a></td>
-		</tr>
+		</tr></tr>
 	</table>
 	<a th:href="@{/employee/new}">新規従業員の登録</a>
 </body>
