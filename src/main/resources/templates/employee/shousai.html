@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>DailyReportSystem</title>
+<link rel="stylesheet" th:href="@{/css/employee/shousai.css}">
+</head>
+<body>
+<header class="page-header">
+    <h2>日報管理システム</h2>
+    <nav>
+    <ul class="main-nav">
+    <li><a href="list.html">従業員管理</a></li>
+    <li><a href="list.html">日報管理</a></li>
+    <li><a href="list.html">ログアウト</a></li>
+    </ul>
+    </nav>
+     
+    </header>
+    
+    <h1><a th:text="${employee.id}"></a>の従業員情報　詳細ページ</h1>
+<table th:each="employee : ${employeelist}">
+
+        <tr>
+            <th>社員番号</th>
+            <td th:text="${employee.authentication.code}"></td>
+            </tr>
+            <tr>
+            <th>氏名</th>
+            <td th:text="${employee.name}"></td>
+            </tr>
+            <tr>
+            <th>権限</th>
+            <td th:text="${employee.authentication.role}"></td>
+            </tr>
+            <tr>
+            <th>登録日時</th>
+            <td th:text="${employee/createdat}"></td>
+            </tr>
+            <tr>
+            <th>更新日時</th>
+            <td th:text="${employee.updateat}"></td>
+            </tr>
+            
+      
+        
+        </table>
+    
+    <a th:href="@{/employee/edit}">この従業員情報を編集する</a>
+    <a th:href="@{/employee/list}">一覧に戻る</a>
+</body>
+</html>
