@@ -39,12 +39,12 @@ public class Employee {
     /** 登録日時 **/
     @Column(name = "created_at", updatable = false)
     @CreatedDate
-    private Date createdat;
+    private Date createdAt;
 
     /** 更新日時 **/
     @Column(name = "updated_at")
     @LastModifiedDate
-    private Date updatedat;
+    private Date updatedAt;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Authentication authentication;

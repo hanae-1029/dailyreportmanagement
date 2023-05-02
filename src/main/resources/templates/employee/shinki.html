@@ -1,0 +1,45 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>DailyReportSystem</title>
+<link rel="stylesheet" th:href="@{/css/employee/shinki.css}">
+</head>
+<body>
+<header class="page-header">
+    <h2>日報管理システム</h2>
+    <nav>
+    <ul class="main-nav">
+    <li><a href="list.html">従業員管理</a></li>
+    <li><a href="list.html">日報管理</a></li>
+    <li><a href="list.html">ログアウト</a></li>
+    </ul>
+    </nav>
+     
+    </header>
+    
+    <h1>従業員 新規登録ページ</h1>
+    <form method="post" th:action="@{/employee/shinki}" th:object="${employee}">
+    <label for="code">社員番号</label>
+        <input type="text" th:field="*{code}">
+        <br>
+        <label for="namer">氏名</label>
+        <input type="text" th:field="*{name}">
+        <br>
+        <br>
+        <label for="password">パスワード</label>
+        <input type="text" th:field="*{password}">
+        <br>
+        <label for="role">権限</label>
+        <select th:field="*{role}">
+            <option value="" th:text="選択してください">
+            <option th:each="item:${T(com.techacademy.entity.Employee.Authentication.Role).values()}" th:value="${item}" th:text="${item}">
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="投稿">
+        <a th:href="@{/employee/list}">覧に戻る</a>
+    </form>
+
+</body>
+</html>
