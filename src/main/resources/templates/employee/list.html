@@ -26,10 +26,10 @@
 			<th>操作</th>
 		</tr>
     	<tr th:each="employee : ${employeelist}">
-		    <td th:text="${employee.authentication.code}"></td>
-			<td th:text="${employee.name}"></td>
-			<td><a th:href="@{/employee/shousai}">詳細を見る</a></td>
-		</tr>
+            <td th:text="${employee.authentication.code}"></td>
+            <td th:text="${employee.name}"></td>
+            <td><a th:href="@{/employee/shousai}">詳細を見る</a></td>
+            </tr>
 		</table>
 	
 	<a th:href="@{/employee/new}">新規従業員の登録</a>

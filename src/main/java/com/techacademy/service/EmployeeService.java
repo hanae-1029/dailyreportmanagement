@@ -22,4 +22,8 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public Employee getShousai(Integer id) {
+        return employeeRepository.findById(id).get();
+    }
+
 }
