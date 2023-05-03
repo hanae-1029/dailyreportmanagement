@@ -1,5 +1,6 @@
 package com.techacademy.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import com.techacademy.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
+    private static final Date LocalDateTime = null;
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository repository) {
@@ -25,7 +27,8 @@ public class EmployeeService {
     }
 
     /** 詳細 */
-    public Employee getShousai(Integer id) {
+    public Employee getEmployee(Integer id) {
+        // findById(id) 1件検索
         return employeeRepository.findById(id).get();
     }
 

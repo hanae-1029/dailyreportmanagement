@@ -30,9 +30,9 @@ public class EmployeeController {
     }
 
     /** 詳細画面を表示 */
-    @GetMapping("/shousai/{id}/")
+    @GetMapping("/shousai/{id}")
     public String getShousai(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("shousai", service.getShousai(id));
+        model.addAttribute("employee", service.getEmployee(id));
         // employee/shousai.htmlに画面遷移
         return "employee/shousai";
     }
