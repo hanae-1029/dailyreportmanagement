@@ -19,19 +19,18 @@
     </header>
     
     <h1>従業員 新規登録ページ</h1>
-    <form method="post" th:action="@{/employee/shinki}" th:object="${employee}">
-    <label for="code">社員番号</label>
-        <input type="text" th:field="*{code}">
+    <form method="post" th:action="@{/employee/shinki}">
+        <label for="code">社員番号</label>
+        <input type="text" th:field="*{employee.authentication.code}">
         <br>
-        <label for="namer">氏名</label>
-        <input type="text" th:field="*{name}">
-        <br>
+        <label for="name">氏名</label>
+        <input type="text" th:field="*{employee.name}">
         <br>
         <label for="password">パスワード</label>
-        <input type="text" th:field="*{password}">
+        <input type="text" th:field="*{employee.authentication.password}">
         <br>
         <label for="role">権限</label>
-        <select th:field="*{role}">
+        <select th:field="*{employee.authentication.role}">
             <option value="" th:text="選択してください">
             <option th:each="item:${T(com.techacademy.entity.Employee.Authentication.Role).values()}" th:value="${item}" th:text="${item}">
         </select>
