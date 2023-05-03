@@ -1,6 +1,5 @@
 package com.techacademy.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,7 +11,6 @@ import com.techacademy.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
-    private static final Date LocalDateTime = null;
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository repository) {
