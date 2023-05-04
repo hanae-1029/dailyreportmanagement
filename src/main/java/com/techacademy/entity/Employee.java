@@ -12,7 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -30,6 +32,8 @@ public class Employee {
 
     /** 名前。20桁。null不許可 */
     @Column(length = 20, nullable = false)
+    @NotEmpty // 値が空ではないことをチェックする
+    @Length(max = 20) // 値の長さをチェックする。max属性は許可する最大長を指定する
     private String name;
 
     /** 削除フラグ **/

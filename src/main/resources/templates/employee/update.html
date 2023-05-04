@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>DailyReportSystem</title>
-<link rel="stylesheet" th:href="@{/css/employee/shinki.css}">
+<link rel="stylesheet" th:href="@{/css/employee/update.css}">
 </head>
 <body>
 <header class="page-header">
@@ -18,11 +18,10 @@
      
     </header>
     
-    <h1>従業員 新規登録ページ</h1>
-    <form method="post" th:action="@{/employee/shinki}">
-        <label for="code">社員番号</label>
-        <input type="text" th:field="*{employee.authentication.code}" th:errorclass="err">
-        <span th:errors="*{employee.authentication.code}" class="err"></span>
+    <h1>従業員情報 編集ページ</h1>
+    <h3>(パスワードは変更する場合のみ入力してください)</h3>
+    <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}">
+        <input type="hidden" id="code" name="code" th:value="*{employee.authentication.code}" th:text="*{employee.authentication.code}">
         <br>
         <label for="name">氏名</label>
         <input type="text" th:field="*{employee.name}" th:errorclass="err">
@@ -35,13 +34,14 @@
         <label for="role">権限</label>
         <select th:field="*{employee.authentication.role}" th:errorclass="err">
         <option th:each="item:${T(com.techacademy.entity.Authentication.Role).values()}" 
-                    th:value="${item}" th:text="${item}" th:selected="*{employee.authentication.role} == ${item}">
+                th:value="${item}" th:text="${item}" th:selected="*{employee.authentication.role} == ${item}">
          </select>
          <span th:errors="*{employee.authentication.role}" class="err"></span>
         <br>
         <br>
         <input type="submit" value="投稿">
-        <a th:href="@{/employee/list}">一覧に戻る</a>
+        <p><a th:href="@{/employee/delete}">この従業員情報を削除する</a></p>
+        <p><a th:href="@{/employee/list}">一覧に戻る</a></p>
     </form>
 
 </body>

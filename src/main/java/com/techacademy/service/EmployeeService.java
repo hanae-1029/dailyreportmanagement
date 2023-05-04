@@ -24,7 +24,7 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    /** 詳細 */
+    /** 詳細 更新 */
     public Employee getEmployee(Integer id) {
         // findById(id) 1件検索
         return employeeRepository.findById(id).get();

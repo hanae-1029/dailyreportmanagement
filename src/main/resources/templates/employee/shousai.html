@@ -36,19 +36,20 @@
             </tr>
             <tr>
             <th>登録日時</th>
-            <td th:text="${employee.createdat}"></td>
+            <td th:text="${employee.createdAt}"></td>
             </tr>
             <tr>
             <th>更新日時</th>
-            <td th:text="${employee.updateat}"></td>
+            <td th:text="${employee.updatedAt}"></td>
+           
             </tr>
             
       
         
         </table>
     
-    <a th:href="@{/employee/edit}">この従業員情報を編集する</a>
-    <a th:href="@{/employee/list}">一覧に戻る</a>
+    <p><a th:href="@{/employee/update/{aid}(aid=${id})}">この従業員情報を編集する</a></p>
+    <p><a th:href="@{/employee/list}">一覧に戻る</a></p>
     
 </body>
 </html>
