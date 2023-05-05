@@ -1,6 +1,7 @@
 package com.techacademy.service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -34,6 +35,14 @@ public class EmployeeService {
     @Transactional
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
+    }
+
+    /** 削除 */
+    @Transactional
+    public void deleteEmployee(Set<Integer> idck) {
+        for (Integer id : idck) {
+            employeeRepository.deleteById(id);
+        }
     }
 
 }

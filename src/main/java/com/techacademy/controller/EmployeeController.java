@@ -65,7 +65,7 @@ public class EmployeeController {
         // modelに登録
         model.addAttribute("employee", service.getEmployee(id));
         // 更新（編集）画面に遷移
-        return "employy/update";
+        return "employee/update";
 
     }
 
@@ -77,5 +77,7 @@ public class EmployeeController {
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
     }
+
+    /** 削除処理 */
 
 }
