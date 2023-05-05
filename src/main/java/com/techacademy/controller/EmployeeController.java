@@ -53,6 +53,19 @@ public class EmployeeController {
             // エラーあり
             return getShinki(employee);
         }
+        // 社員番号、氏名、パスワードが空の場合登録画面に戻る
+        if ("".equals(employee.getAuthentication().getCode())) {
+
+            return "employee/shinki";
+        }
+        if ("".equals(employee.getName())) {
+
+            return "employee/shinki";
+        }
+        if ("".equals(employee.getAuthentication().getPassword())) {
+
+            return "employee/shinki";
+        }
         // 登録
         employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
@@ -73,6 +86,11 @@ public class EmployeeController {
     /** 更新（編集）処理 */
     @PostMapping("/update/{id}")
     public String postEmployee(Employee employee) {
+        // 氏名がからの場合編集ページへ戻る
+        if ("".equals(employee.getName())) {
+
+            return "employee/update";
+        }
         // 登録
         employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
@@ -81,5 +99,11 @@ public class EmployeeController {
     }
 
     /** 削除処理 */
-
+    @GetMapping("/{id}/delete")
+    public String deleteEmployee(Model model, Employee Employee) {
+        // 情報の削除
+        service.delete(Employee.getId());
+        // 一覧画面にリダイレクト
+        return "redirect:/employee/list";
+    }
 }

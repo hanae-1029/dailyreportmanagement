@@ -40,9 +40,9 @@
         <br>
         <br>
         <input type="submit" value="投稿">
-        <p><a th:href="@{/employee/delete}">この従業員情報を削除する</a></p>
+        <p><a th:href="@{/employee/{id}/delete(id=*{id})}">この従業員情報を削除する</a></p>
         <p><a th:href="@{/employee/list}">一覧に戻る</a></p>
-    </form>
+    
 
 </body>
 </html>
