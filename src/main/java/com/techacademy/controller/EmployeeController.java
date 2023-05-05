@@ -86,7 +86,7 @@ public class EmployeeController {
     /** 更新（編集）処理 */
     @PostMapping("/update/{id}")
     public String postEmployee(Employee employee) {
-        // 氏名がからの場合編集ページへ戻る
+        // 氏名が空の場合編集ページへ戻る
         if ("".equals(employee.getName())) {
 
             return "employee/update";
@@ -101,7 +101,7 @@ public class EmployeeController {
     /** 削除処理 */
     @GetMapping("/{id}/delete")
     public String deleteEmployee(Model model, Employee Employee) {
-        // 情報の削除
+        // データベースのデータを削除する
         service.delete(Employee.getId());
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";

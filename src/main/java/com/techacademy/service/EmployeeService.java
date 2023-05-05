@@ -38,7 +38,7 @@ public class EmployeeService {
 
     /** 削除 */
     public void delete(Integer id) {
-        // データベースからデータを削除する
+        // idを指定してデータベースからデータを削除する
         employeeRepository.deleteById(id);
     }
 }
