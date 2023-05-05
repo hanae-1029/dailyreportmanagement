@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -51,6 +52,7 @@ public class Employee {
     private Date updatedAt;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @Valid
     private Authentication authentication;
 
     /** レコードが削除される前に行なう処理 */

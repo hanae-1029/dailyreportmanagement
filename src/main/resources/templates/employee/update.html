@@ -21,7 +21,7 @@
     <h1>従業員情報 編集ページ</h1>
     <h3>(パスワードは変更する場合のみ入力してください)</h3>
     <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}">
-        <input type="hidden" id="code" name="code" th:value="*{employee.authentication.code}" th:text="*{employee.authentication.code}">
+        <input type="hidden" th:field="*{employee.authentication.code}">
         <br>
         <label for="name">氏名</label>
         <input type="text" th:field="*{employee.name}" th:errorclass="err">
