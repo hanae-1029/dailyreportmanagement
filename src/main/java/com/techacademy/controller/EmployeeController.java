@@ -54,6 +54,7 @@ public class EmployeeController {
             return getShinki(employee);
         }
         // 登録
+        employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
@@ -61,7 +62,7 @@ public class EmployeeController {
 
     /** 更新（編集）画面を表示 */
     @GetMapping("/update/{id}")
-    public String getEmployee(@PathVariable("id") Integer id, Model model) {
+    public String getUpdate(@PathVariable("id") Integer id, Model model) {
         // modelに登録
         model.addAttribute("employee", service.getEmployee(id));
         // 更新（編集）画面に遷移
@@ -73,6 +74,7 @@ public class EmployeeController {
     @PostMapping("/update/{id}")
     public String postEmployee(Employee employee) {
         // 登録
+        employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
