@@ -72,5 +72,6 @@ public class UserDetail implements UserDetails {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    String encPwd = passwordEncoder.encode("password");
 
 }
