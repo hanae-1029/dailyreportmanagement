@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: #7fd9d2;
+}
+
+.h2 {
+    width: 210px;
+    margin-top: 14px;
+}
+
+.main-nav {
+    display: flex;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+    
+    
+}
+.main-nav li {
+    margin-left: 36px;
+}
+
+.main-nav a {
+    color: #432;
+}
+
+.main-nav a:hover {
+    color: #ffffff;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    border-collapse: collapse;
+}
+

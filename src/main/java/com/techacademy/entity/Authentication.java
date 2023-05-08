@@ -20,6 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name = "authentication")
 public class Authentication {
+
     /** 権限用の列挙型 */
     public static enum Role {
         一般, 管理者
