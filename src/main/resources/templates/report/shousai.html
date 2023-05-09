@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>DailyReportSystem</title>
-<link rel="stylesheet" th:href="@{/css/employee/shousai.css}">
+<link rel="stylesheet" th:href="@{/css/report/shousai.css}">
 </head>
 <body>
 <header class="page-header">
@@ -18,21 +18,21 @@
      
     </header>
     
-    <h1>の従業員情報　詳細ページ</h1>
+    <h1>日報　詳細ページ</h1>
     
 <table>
 
         <tr>
-            <th>社員番号</th>
-            <td th:text="${employee.authentication.code}"></td>
-            </tr>
-            <tr>
             <th>氏名</th>
             <td th:text="${employee.name}"></td>
             </tr>
             <tr>
-            <th>権限</th>
-            <td th:text="${employee.authentication.role}"></td>
+            <th>日付</th>
+            <td th:text="${report.reportDate}"></td>
+            </tr>
+            <tr>
+            <th>タイトル</th>
+            <td th:text="${report.title}"></td>
             </tr>
             <tr>
             <th>登録日時</th>
@@ -48,8 +48,8 @@
         
         </table>
     
-    <p><a th:href="@{/employee/update/{aid}(aid=${id})}">この従業員情報を編集する</a></p>
-    <p><a th:href="@{/employee/list}">一覧に戻る</a></p>
+    <p><a th:href="@{/report/update/{aid}(aid=${id})}">この日報を編集する</a></p>
+    <p><a th:href="@{/report/list}">一覧に戻る</a></p>
     
 </body>
 </html>

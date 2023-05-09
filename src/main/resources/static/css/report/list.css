@@ -38,13 +38,12 @@ header {
     justify-content: space-between;
 }
 
-
-label {
-    display: inline-block;
-    width: 8em;
-    line-height: 200%;
+table {
+    border-collapse: collapse;
 }
 
-.err {
-    color: red;
+th, td {
+    border: solid 1px black;
+    padding: 10px 20px;
 }
+

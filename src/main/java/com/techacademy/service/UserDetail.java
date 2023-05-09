@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.techacademy.entity.Employee;
 
@@ -69,9 +67,5 @@ public class UserDetail implements UserDetails {
         // ユーザーが有効であればtrueを返す
         return true;
     }
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    String encPwd = passwordEncoder.encode("password");
 
 }

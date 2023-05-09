@@ -41,10 +41,25 @@ header {
 
 label {
     display: inline-block;
-    width: 8em;
+    width: 6em;
     line-height: 200%;
 }
 
 .err {
     color: red;
+}
+
+
+
+.Form-Item-Textarea {
+    margin-left: 100px;
+    height: 200px;
+     width: 200px;
+    flex: inherit;
+    font-size: 15px;
+  }
+
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+
 }

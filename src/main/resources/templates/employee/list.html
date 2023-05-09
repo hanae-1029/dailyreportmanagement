@@ -10,19 +10,16 @@
 	<h2>日報管理システム</h2>
 	<nav>
 	<ul class="main-nav">
-	<li><a href="list.html">従業員管理</a></li>
-	<li><a href="list.html">日報管理</a></li>
-	<li><a href="list.html">ログアウト</a></li>
+	<li><a href="/employee/list">従業員管理</a></li>
+	<li><a href="/report/list">日報管理</a></li>
+	<li><a href="/login">ログアウト</a></li>
 	</ul>
 	</nav>
 	 
 	</header>
 	
 	<h1>従業員一覧</h1>
-	<form method="post" th:action="@{/logout}">
-        <input type="submit" value="ログアウト">
-    </form><br>
-    
+	
 <table>
 		<tr>
 			<th>社員番号</th>
