@@ -61,6 +61,7 @@ public class EmployeeController {
         }
         // 登録
         employee.getAuthentication().setEmployee(employee);
+
         service.saveEmployee(employee);
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";

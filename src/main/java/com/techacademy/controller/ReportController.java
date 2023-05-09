@@ -51,6 +51,28 @@ public class ReportController {
     public String postShinki(@Validated Report report, BindingResult res, Model model) {
         if (res.hasErrors()) {
             // エラーあり
+            return getShinki(report);
+        }
+        // 登録
+        service.saveReport(report);
+        // 一覧画面にリダイレクト
+        return "redirect:/report/list";
+    }
+
+    /** 更新画面を表示 */
+    @GetMapping("/update/{id}")
+    public String getReport(@PathVariable("id") Integer id, Model model) {
+        // Modelに登録
+        model.addAttribute("report", service.getReport(id));
+        // 更新画面に遷移
+        return "report/update";
+    }
+
+    /** 更新処理 */
+    @PostMapping("/update/{id}")
+    public String postReport(@Validated Report report, BindingResult res, Model model) {
+        if (res.hasErrors()) {
+            // エラーあり
             return "report/shinki";
         }
         // 日付が空の場合新規ページへ戻る
@@ -69,28 +91,15 @@ public class ReportController {
             return "report/shinki";
         }
 
-        // 登録
+        Report motoReport = service.getReport(report.getId());
+        report.setReportDate(motoReport.getReportDate());
+        report.setTitle(motoReport.getTitle());
+        report.setContent(motoReport.getContent());
 
-        service.saveReport(report);
-        // 一覧画面にリダイレクト
-        return "redirect:/report/list";
-    }
-
-    /** 更新画面を表示 */
-    @GetMapping("/update/{id}")
-    public String getReport(@PathVariable("id") Integer id, Model model) {
-        // Modelに登録
-        model.addAttribute("report", service.getReport(id));
-        // 更新画面に遷移
-        return "report/update";
-    }
-
-    /** 更新処理 */
-    @PostMapping("/update/{id}")
-    public String postReport(Report report) {
         // 登録
         service.saveReport(report);
         // 一覧画面にリダイレクト
         return "redirect:/report/list";
     }
+
 }
