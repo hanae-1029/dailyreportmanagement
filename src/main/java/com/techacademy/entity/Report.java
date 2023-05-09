@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Length;
@@ -37,6 +38,7 @@ public class Report {
 
     /** 日報の日付 */
     @Column(nullable = false)
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate reportDate;
 
