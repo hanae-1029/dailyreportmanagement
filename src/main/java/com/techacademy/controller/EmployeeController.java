@@ -61,7 +61,7 @@ public class EmployeeController {
         }
         // 登録
         employee.getAuthentication().setEmployee(employee);
-
+        employee.setDeleteflag(0);
         service.saveEmployee(employee);
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
@@ -79,7 +79,7 @@ public class EmployeeController {
 
     /** 更新（編集）処理 */
     @PostMapping("/update/{id}")
-    public String postEmployee(@Validated Employee employee, BindingResult res, Model model) {
+    public String postUpdate(@Validated Employee employee, BindingResult res, Model model) {
         if (res.hasErrors()) {
             // エラーあり
             return "employee/update";
