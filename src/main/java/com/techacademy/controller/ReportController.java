@@ -74,19 +74,18 @@ public class ReportController {
 
     /** 更新処理 */
     @PostMapping("/update/{id}")
-    public String postUpdate(@Validated Report report, BindingResult res, Model model) {
+    public String postUpdate(@Validated Report report, BindingResult res,
+            @AuthenticationPrincipal UserDetail userdetail, Model model) {
         if (res.hasErrors()) {
             // エラーあり
             return "report/update";
         }
 
-        Report motoReport = service.getReport(report.getId());
-        report.setReportDate(motoReport.getReportDate());
-        report.setTitle(motoReport.getTitle());
-        report.setContent(motoReport.getContent());
-
         // 登録
-
+        Report motoReport = service.getReport(report.getId());
+        report.setCreatedAt(motoReport.getCreatedAt());
+        report.setUpdatedAt(motoReport.getUpdatedAt());
+        report.setEmployee(userdetail.getEmployee());
         service.saveReport(report);
         // 一覧画面にリダイレクト
         return "redirect:/report/list";
