@@ -1,7 +1,7 @@
 package com.techacademy.entity;
 
-import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,6 +50,7 @@ public class Report {
 
     /** 内容 **/
     @Column(nullable = false)
+    @NotEmpty
     @Type(type = "text")
     private String content;
 
@@ -62,12 +63,12 @@ public class Report {
     /** 登録日時 **/
     @Column(name = "created_at", updatable = false)
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     /** 更新日時 **/
     @Column(name = "updated_at")
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Report> reports;

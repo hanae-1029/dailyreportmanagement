@@ -1,5 +1,6 @@
 package com.techacademy.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.techacademy.entity.Report;
 import com.techacademy.service.ReportService;
+import com.techacademy.service.UserDetail;
 
 @Controller
 @RequestMapping("report")
@@ -24,7 +26,7 @@ public class ReportController {
 
     /** 一覧画面を表示 */
     @GetMapping("/list")
-    public String getlist(Model model) {
+    public String getList(Model model) {
         // 全件検索結果をModelに登録
         model.addAttribute("reportlist", service.getReportList());
         // user/list.htmlに画面遷移
@@ -48,12 +50,14 @@ public class ReportController {
 
     /** 新規登録処理 */
     @PostMapping("/shinki")
-    public String postShinki(@Validated Report report, BindingResult res, Model model) {
+    public String postShinki(@Validated Report report, BindingResult res,
+            @AuthenticationPrincipal UserDetail userdetail, Model model) {
         if (res.hasErrors()) {
             // エラーあり
             return getShinki(report);
         }
         // 登録
+        report.setEmployee(userdetail.getEmployee());
         service.saveReport(report);
         // 一覧画面にリダイレクト
         return "redirect:/report/list";
@@ -61,7 +65,7 @@ public class ReportController {
 
     /** 更新画面を表示 */
     @GetMapping("/update/{id}")
-    public String getReport(@PathVariable("id") Integer id, Model model) {
+    public String getUpdate(@PathVariable("id") Integer id, Model model) {
         // Modelに登録
         model.addAttribute("report", service.getReport(id));
         // 更新画面に遷移
@@ -70,25 +74,10 @@ public class ReportController {
 
     /** 更新処理 */
     @PostMapping("/update/{id}")
-    public String postReport(@Validated Report report, BindingResult res, Model model) {
+    public String postUpdate(@Validated Report report, BindingResult res, Model model) {
         if (res.hasErrors()) {
             // エラーあり
-            return "report/shinki";
-        }
-        // 日付が空の場合新規ページへ戻る
-        if ("".equals(report.getReportDate())) {
-
-            return "report/shinki";
-        }
-        // タイトルが空の場合新規ページに戻る
-        if ("".equals(report.getTitle())) {
-
-            return "report/shinki";
-        }
-        // 内容が空の場合編集ページへ戻る
-        if ("".equals(report.getContent())) {
-
-            return "report/shinki";
+            return "report/update";
         }
 
         Report motoReport = service.getReport(report.getId());
@@ -97,6 +86,7 @@ public class ReportController {
         report.setContent(motoReport.getContent());
 
         // 登録
+
         service.saveReport(report);
         // 一覧画面にリダイレクト
         return "redirect:/report/list";

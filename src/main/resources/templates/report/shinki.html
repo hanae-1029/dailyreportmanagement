@@ -25,7 +25,7 @@
         <span th:errors="*{report.reportDate}" class="err"></span>
         <br>
        <label for="name">氏名</label>
-        <input type="text" th:field="*{report.employee.name}" th:errorclass="err">
+       <input type="text" th:field="*{report.employee.name}" th:errorclass="err">
         <span th:errors="*{report.employee.name}" class="err"></span>
        <br>
         <label for="title">タイトル</label>
@@ -35,8 +35,7 @@
         <br>
         
         <label for="content">内容</label>
-        <pre><textarea th:field="*{report.content}"></textarea></pre>
-        
+        <pre><textarea th:field="*{report.content}" th:errorclass="err"></textarea></pre>
         <span th:errors="*{report.content}" class="err"></span>
         <br>
         <br>

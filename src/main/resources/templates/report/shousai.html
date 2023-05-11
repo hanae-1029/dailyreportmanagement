@@ -24,7 +24,7 @@
 
         <tr>
             <th>氏名</th>
-            <td th:text="${employee.name}"></td>
+            <td th:text="${report.employee.name}"></td>
             </tr>
             <tr>
             <th>日付</th>
@@ -35,12 +35,16 @@
             <td th:text="${report.title}"></td>
             </tr>
             <tr>
+            <th>内容</th>
+            <td th:text="${report.content}"></td>
+            </tr>
+            <tr>
             <th>登録日時</th>
-            <td th:text="${employee.createdAt}"></td>
+            <td th:text="${report.employee.createdAt}"></td>
             </tr>
             <tr>
             <th>更新日時</th>
-            <td th:text="${employee.updatedAt}"></td>
+            <td th:text="${report.employee.updatedAt}"></td>
            
             </tr>
             

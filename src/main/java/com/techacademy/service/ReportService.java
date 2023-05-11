@@ -17,6 +17,12 @@ public class ReportService {
         this.reportRepository = repository;
     }
 
+    /** ログインして自分の日報 */
+    public List<Report> getEmployee() {
+
+        return reportRepository.findAll();
+    }
+
     /** 全件を検索して返す */
     public List<Report> getReportList() {
         // リポジトリのfindAllメソッドを呼び出す

@@ -1,5 +1,8 @@
 package com.techacademy.controller;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,10 +62,14 @@ public class EmployeeController {
 
             return "employee/shinki";
         }
+
         // 登録
         employee.getAuthentication().setEmployee(employee);
+        employee.setCreatedAt(LocalDateTime.now());
+        employee.setUpdatedAt(LocalDateTime.now());
         employee.setDeleteflag(0);
         service.saveEmployee(employee);
+
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
     }
