@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -56,7 +55,6 @@ public class Report {
 
     /** 従業員テーブルのID **/
     @ManyToOne
-    @Valid
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 

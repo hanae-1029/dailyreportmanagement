@@ -1,5 +1,7 @@
 package com.techacademy.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,6 +60,8 @@ public class ReportController {
         }
         // 登録
         report.setEmployee(userdetail.getEmployee());
+        report.setCreatedAt(LocalDateTime.now());
+        report.setUpdatedAt(LocalDateTime.now());
         service.saveReport(report);
         // 一覧画面にリダイレクト
         return "redirect:/report/list";

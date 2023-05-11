@@ -1,6 +1,5 @@
 package com.techacademy.controller;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Controller;
@@ -56,22 +55,29 @@ public class EmployeeController {
             // エラーあり
             return getShinki(employee);
         }
-        // 社員番号、氏名、パスワードが空の場合登録画面に戻る
+        try {
 
-        if ("".equals(employee.getAuthentication().getPassword())) {
+            // 社員番号、氏名、パスワードが空の場合登録画面に戻る
 
+            if ("".equals(employee.getAuthentication().getPassword())) {
+
+                return "employee/shinki";
+            }
+
+            // 登録
+            employee.getAuthentication().setEmployee(employee);
+            employee.setCreatedAt(LocalDateTime.now());
+            employee.setUpdatedAt(LocalDateTime.now());
+            employee.setDeleteflag(0);
+            service.saveEmployee(employee);
+
+        } catch (Exception e) {
+            // 新規登録画面に遷移
             return "employee/shinki";
         }
-
-        // 登録
-        employee.getAuthentication().setEmployee(employee);
-        employee.setCreatedAt(LocalDateTime.now());
-        employee.setUpdatedAt(LocalDateTime.now());
-        employee.setDeleteflag(0);
-        service.saveEmployee(employee);
-
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
+
     }
 
     /** 更新（編集）画面を表示 */

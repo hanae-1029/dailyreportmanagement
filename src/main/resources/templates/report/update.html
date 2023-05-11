@@ -19,16 +19,15 @@
     </header>
     
     <h1>日報 編集ページ</h1>
-    
     <form method="post" th:action="@{/report/update/{id}/(id=${report.id})}">
-        <input type="hidden" th:field="*{report.employee.authentication.code}">
-        <br>
+       <input type="hidden" th:field="*{report.employee.authentication.code}">
+      
         <label for="name">日付</label>
         <input type="date" th:field="*{report.reportDate}" th:errorclass="err">
         <span th:errors="*{report.reportDate}" class="err"></span>
         <br>
         <label for="name">氏名</label>
-        <span th:field="*{report.employee.name}"></span>
+        <span th:text="*{report.employee.name}"></span>
         
         <br>
         <label for="title">タイトル</label>
@@ -44,7 +43,7 @@
         <input type="submit" value="投稿">
         
         <p><a th:href="@{/report/list}">一覧に戻る</a></p>
-    
+    </form>
 
 </body>
 </html>
