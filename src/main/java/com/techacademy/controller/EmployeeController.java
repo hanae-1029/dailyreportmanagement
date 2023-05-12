@@ -77,10 +77,11 @@ public class EmployeeController {
             employee.setUpdatedAt(LocalDateTime.now());
             employee.setDeleteflag(0);
 
-            service.saveEmployee(employee);
             // パスワード暗号化
-            String password = passwordEncoder.encode("password");
+            String password = employee.getAuthentication().getPassword();
             employee.getAuthentication().setPassword(passwordEncoder.encode(password));
+
+            service.saveEmployee(employee);
 
         } catch (Exception e) {
             // 新規登録画面に遷移
@@ -124,13 +125,13 @@ public class EmployeeController {
         employee.setCreatedAt(motoEmployee.getCreatedAt());
         employee.setUpdatedAt(motoEmployee.getUpdatedAt());
         employee.setDeleteflag(motoEmployee.getDeleteflag());
+        // パスワード暗号化
+        String password = employee.getAuthentication().getPassword();
+        employee.getAuthentication().setPassword(passwordEncoder.encode(password));
 
         // 登録
         employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
-        // パスワード暗号化
-        String password = passwordEncoder.encode("password");
-        employee.getAuthentication().setPassword(passwordEncoder.encode(password));
 
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";

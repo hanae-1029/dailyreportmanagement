@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.techacademy.entity.Employee;
@@ -14,8 +12,6 @@ import com.techacademy.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     public EmployeeService(EmployeeRepository repository) {
         this.employeeRepository = repository;
@@ -39,9 +35,6 @@ public class EmployeeService {
 
     @Transactional
     public Employee saveEmployee(Employee employee) {
-        // パスワード暗号化
-        String password = passwordEncoder.encode("password");
-        employee.getAuthentication().setPassword(passwordEncoder.encode(password));
 
         return employeeRepository.save(employee);
 
