@@ -45,7 +45,13 @@ public class ReportController {
 
     /** 新規登録画面を表示 */
     @GetMapping("/shinki")
-    public String getShinki(@ModelAttribute Report report) {
+    // 引数の一番右に追加
+    public String getShinki(@ModelAttribute Report report, @AuthenticationPrincipal UserDetail userDetail) {
+        // 自分のidを取得
+        Integer id = userDetail.getEmployee().getId();
+        // 登録
+        report.setEmployee(userDetail.getEmployee());
+
         // 新規登録画面に遷移
         return "report/shinki";
     }
@@ -56,7 +62,7 @@ public class ReportController {
             @AuthenticationPrincipal UserDetail userdetail, Model model) {
         if (res.hasErrors()) {
             // エラーあり
-            return getShinki(report);
+            return "report/shinki";
         }
         // 登録
         report.setEmployee(userdetail.getEmployee());

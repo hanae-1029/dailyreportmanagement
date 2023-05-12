@@ -2,6 +2,8 @@ package com.techacademy.controller;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,9 +21,12 @@ import com.techacademy.service.EmployeeService;
 @RequestMapping("employee")
 public class EmployeeController {
     private final EmployeeService service;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public EmployeeController(EmployeeService service) {
         this.service = service;
+
     }
 
     /** 一覧画面を表示 */
@@ -49,8 +54,10 @@ public class EmployeeController {
     }
 
     /** 新規登録処理 */
+
     @PostMapping("/shinki")
     public String postShinki(@Validated Employee employee, BindingResult res, Model model) {
+
         if (res.hasErrors()) {
             // エラーあり
             return getShinki(employee);
@@ -69,7 +76,11 @@ public class EmployeeController {
             employee.setCreatedAt(LocalDateTime.now());
             employee.setUpdatedAt(LocalDateTime.now());
             employee.setDeleteflag(0);
+
             service.saveEmployee(employee);
+            // パスワード暗号化
+            String password = passwordEncoder.encode("password");
+            employee.getAuthentication().setPassword(passwordEncoder.encode(password));
 
         } catch (Exception e) {
             // 新規登録画面に遷移
@@ -107,6 +118,7 @@ public class EmployeeController {
 
             return "employee/list";
         }
+
         // 登録
         Employee motoEmployee = service.getEmployee(employee.getId());
         employee.setCreatedAt(motoEmployee.getCreatedAt());
@@ -116,6 +128,10 @@ public class EmployeeController {
         // 登録
         employee.getAuthentication().setEmployee(employee);
         service.saveEmployee(employee);
+        // パスワード暗号化
+        String password = passwordEncoder.encode("password");
+        employee.getAuthentication().setPassword(passwordEncoder.encode(password));
+
         // 一覧画面にリダイレクト
         return "redirect:/employee/list";
     }
