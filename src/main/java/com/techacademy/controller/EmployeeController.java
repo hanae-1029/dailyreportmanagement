@@ -96,7 +96,9 @@ public class EmployeeController {
     @GetMapping("/update/{id}")
     public String getUpdate(@PathVariable("id") Integer id, Model model) {
         // modelに登録
-        model.addAttribute("employee", service.getEmployee(id));
+        Employee employee = service.getEmployee(id);
+        employee.getAuthentication().setPassword("");
+        model.addAttribute("employee", employee);
         // 更新（編集）画面に遷移
         return "employee/update";
 
@@ -123,11 +125,17 @@ public class EmployeeController {
         // 登録
         Employee motoEmployee = service.getEmployee(employee.getId());
         employee.setCreatedAt(motoEmployee.getCreatedAt());
-        employee.setUpdatedAt(motoEmployee.getUpdatedAt());
+        employee.setUpdatedAt(LocalDateTime.now());
         employee.setDeleteflag(motoEmployee.getDeleteflag());
         // パスワード暗号化
         String password = employee.getAuthentication().getPassword();
-        employee.getAuthentication().setPassword(passwordEncoder.encode(password));
+        if ("".equals(password)) {
+            employee.getAuthentication().setPassword(motoEmployee.getAuthentication().getPassword());
+
+        } else {
+
+            employee.getAuthentication().setPassword(passwordEncoder.encode(password));
+        }
 
         // 登録
         employee.getAuthentication().setEmployee(employee);
