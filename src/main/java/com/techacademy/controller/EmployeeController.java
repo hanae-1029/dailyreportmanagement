@@ -116,11 +116,6 @@ public class EmployeeController {
 
             return "employee/update";
         }
-        // パスワードが空の場合一覧画面に戻る
-        if ("".equals(employee.getAuthentication().getPassword())) {
-
-            return "employee/list";
-        }
 
         // 登録
         Employee motoEmployee = service.getEmployee(employee.getId());
