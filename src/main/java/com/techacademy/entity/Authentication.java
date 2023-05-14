@@ -36,7 +36,6 @@ public class Authentication {
 
     /** パスワード **/
     @Column(name = "password", nullable = false, length = 255)
-    @NotEmpty
     @Length(max = 255)
     private String password;
 
