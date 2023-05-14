@@ -52,7 +52,7 @@
         
         </table>
     
-    <p><a th:href="@{/report/update/{aid}(aid=${id})}">この日報を編集する</a></p>
+    <p><a th:if="${report.employee.id == loginUser.id}" th:href="@{/report/update/{id}(id=${report.id})}">この日報を編集する</a></p>
     <p><a th:href="@{/report/list}">一覧に戻る</a></p>
     
 </body>

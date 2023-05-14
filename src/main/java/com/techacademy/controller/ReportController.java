@@ -37,8 +37,13 @@ public class ReportController {
 
     /** 詳細画面を表示 */
     @GetMapping("/shousai/{id}")
-    public String getShousai(@PathVariable("id") Integer id, Model model) {
+    public String getShousai(@PathVariable("id") Integer id, @AuthenticationPrincipal UserDetail userDetail,
+            Model model) {
+
         model.addAttribute("report", service.getReport(id));
+        // ログインユーザー情報
+        model.addAttribute("loginUser", userDetail.getEmployee());
+
         // employee/shousai.htmlに画面遷移
         return "report/shousai";
     }
