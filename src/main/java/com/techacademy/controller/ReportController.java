@@ -94,7 +94,7 @@ public class ReportController {
         // 登録
         Report motoReport = service.getReport(report.getId());
         report.setCreatedAt(motoReport.getCreatedAt());
-        report.setUpdatedAt(motoReport.getUpdatedAt());
+        report.setUpdatedAt(LocalDateTime.now());
         report.setEmployee(userdetail.getEmployee());
         service.saveReport(report);
         // 一覧画面にリダイレクト
