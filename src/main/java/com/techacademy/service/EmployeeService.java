@@ -18,13 +18,13 @@ public class EmployeeService {
 
     }
 
-    /** 全件検索して返す **/
+    /** 全件検索して返す */
     public List<Employee> getEmployeeList() {
         // リポジトリのfindAllメソッドを呼び出す
         return employeeRepository.findAll();
     }
 
-    /** 詳細 更新 */
+    /** 詳細更新 */
     public Employee getEmployee(Integer id) {
 
         // findById(id) 1件検索
@@ -32,7 +32,6 @@ public class EmployeeService {
     }
 
     /** 新規登録 */
-
     @Transactional
     public Employee saveEmployee(Employee employee) {
 

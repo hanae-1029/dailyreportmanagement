@@ -39,16 +39,16 @@ public class Employee {
     @Length(max = 20) // 値の長さをチェックする。max属性は許可する最大長を指定する
     private String name;
 
-    /** 削除フラグ **/
+    /** 削除フラグ */
     @Column(name = "delete_flag")
     public Integer deleteflag;
 
-    /** 登録日時 **/
+    /** 登録日時 */
     @Column(name = "created_at", updatable = false)
     @CreatedDate
     private LocalDateTime createdAt;
 
-    /** 更新日時 **/
+    /** 更新日時 */
     @Column(name = "updated_at")
     @LastModifiedDate
     private LocalDateTime updatedAt;

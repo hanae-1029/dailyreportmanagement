@@ -54,7 +54,6 @@ public class EmployeeController {
     }
 
     /** 新規登録処理 */
-
     @PostMapping("/shinki")
     public String postShinki(@Validated Employee employee, BindingResult res, Model model) {
 
